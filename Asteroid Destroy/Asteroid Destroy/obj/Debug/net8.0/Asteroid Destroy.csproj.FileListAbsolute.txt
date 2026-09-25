@@ -1,0 +1,38 @@
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\Asteroid Destroy.exe
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\Asteroid Destroy.deps.json
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\Asteroid Destroy.runtimeconfig.json
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\Asteroid Destroy.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\Asteroid Destroy.pdb
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\MonoGame.Framework.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\NVorbis.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\android-arm\native\libopenal.so
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\android-arm64\native\libopenal.so
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\android-x64\native\libopenal.so
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\android-x86\native\libopenal.so
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\ios-arm64\native\libopenal.a
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\iossimulator-arm64\native\libopenal.a
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\iossimulator-x64\native\libopenal.a
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\linux-arm64\native\libopenal.so
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\linux-x64\native\libopenal.so
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\osx\native\libopenal.dylib
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\win-arm64\native\openal.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\win-x64\native\openal.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\linux-arm64\native\libSDL2-2.0.so.0
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\osx\native\libSDL2-2.0.0.dylib
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\win-arm64\native\SDL2.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\runtimes\win-x64\native\SDL2.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\mgcb.tool.restore
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid Destroy.csproj.AssemblyReference.cache
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid Destroy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid Destroy.AssemblyInfoInputs.cache
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid Destroy.AssemblyInfo.cs
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid Destroy.csproj.CoreCompileInputs.cache
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid.7AA055A4.Up2Date
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid Destroy.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\refint\Asteroid Destroy.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid Destroy.pdb
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\Asteroid Destroy.genruntimeconfig.cache
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\obj\Debug\net8.0\ref\Asteroid Destroy.dll
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\Content\nave.xnb
+C:\Users\Redes-04\source\repos\Asteroid Destroy\Asteroid Destroy\bin\Debug\net8.0\Content\bala.xnb
