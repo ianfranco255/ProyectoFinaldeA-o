@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Redes-04\\source\\repos\\Asteroid Destroy\\Asteroid Destroy\\Asteroid Destroy.csproj": {}
+    "C:\\Users\\Redes-04\\Downloads\\ProyectoFinaldeA-o-main\\Asteroid Destroy\\Asteroid Destroy\\Asteroid Destroy.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Redes-04\\source\\repos\\Asteroid Destroy\\Asteroid Destroy\\Asteroid Destroy.csproj": {
+    "C:\\Users\\Redes-04\\Downloads\\ProyectoFinaldeA-o-main\\Asteroid Destroy\\Asteroid Destroy\\Asteroid Destroy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Redes-04\\source\\repos\\Asteroid Destroy\\Asteroid Destroy\\Asteroid Destroy.csproj",
+        "projectUniqueName": "C:\\Users\\Redes-04\\Downloads\\ProyectoFinaldeA-o-main\\Asteroid Destroy\\Asteroid Destroy\\Asteroid Destroy.csproj",
         "projectName": "Asteroid Destroy",
-        "projectPath": "C:\\Users\\Redes-04\\source\\repos\\Asteroid Destroy\\Asteroid Destroy\\Asteroid Destroy.csproj",
+        "projectPath": "C:\\Users\\Redes-04\\Downloads\\ProyectoFinaldeA-o-main\\Asteroid Destroy\\Asteroid Destroy\\Asteroid Destroy.csproj",
         "packagesPath": "C:\\Users\\Redes-04\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Redes-04\\source\\repos\\Asteroid Destroy\\Asteroid Destroy\\obj\\",
+        "outputPath": "C:\\Users\\Redes-04\\Downloads\\ProyectoFinaldeA-o-main\\Asteroid Destroy\\Asteroid Destroy\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
