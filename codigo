@@ -1,0 +1,296 @@
+using System;
+using System.Collections.Generic; // AÑADIDO: Necesario para la lista de asteroides
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+namespace JuegoAsteroides
+{
+    internal struct Vector2Virtual
+    {
+        public float X;
+        public float Y;
+        public Vector2Virtual(float x, float y) { X = x; Y = y; }
+    }
+
+    internal struct Nave
+    {
+        public Vector2Virtual Posicion;
+        public float Angulo; // Ángulo de rotación en radianes
+    }
+
+    internal struct Bala
+    {
+        public Vector2Virtual Posicion;
+        public Vector2 Dirección; // Hacia dónde viaja la bala al ser disparada
+        public bool Activa;
+    }
+
+    // --- AÑADIDO: ESTRUCTURA PARA LOS ASTEROIDES ---
+    internal struct Asteroide
+    {
+        public Vector2Virtual Posicion;
+        public Vector2 Dirección;
+        public float Velocidad;
+        public int Vida;
+        public bool Activo;
+        public float RadioColision;
+    }
+
+    public class Game1 : Game
+    {
+        private GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
+
+        private Texture2D _spriteNave;
+        private Texture2D _spriteBala;
+        private Texture2D _spriteAsteroide; // AÑADIDO: Textura para el asteroide
+
+        private Nave _jugador;
+        private Bala _proyectil;
+
+        // --- AÑADIDO: VARIABLES PARA CONTROLAR ASTEROIDES ---
+        private List<Asteroide> _listaAsteroides;
+        private float _cronometroSpawn = 0f;
+        private float _tiempoEntreAsteroides = 2.0f;
+        private Random _random;
+
+        private const int ANCHO_VIRTUAL = 100;
+        private const int ALTO_VIRTUAL = 100;
+        private float _velocidadNave = 1.5f;
+        private float _velocidadRotacion = 0.05f;
+
+        private KeyboardState _estadoTecladoAnterior;
+
+        // Variables de Animación de la Nave (INTACTAS)
+        private int _totalFotogramas = 0;
+        private int _fotogramaActual = 0;
+        private float _tiempoPorFotograma = 0.08f;
+        private float _cronometroTiempo = 0f;
+        private int _anchoFotograma;
+        private int _altoFotograma;
+
+        public Game1()
+        {
+            _graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+            IsMouseVisible = true;
+            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferHeight = 800;
+
+            // --- AÑADIDO: INICIALIZACIÓN ---
+            _listaAsteroides = new List<Asteroide>();
+            _random = new Random();
+        }
+
+        protected override void Initialize()
+        {
+            _jugador.Posicion = new Vector2Virtual(50, 85);
+            _jugador.Angulo = 0f; // Mirando hacia arriba por defecto
+            _proyectil.Activa = false;
+            base.Initialize();
+        }
+
+        protected override void LoadContent()
+        {
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteNave = Content.Load<Texture2D>("nave");
+            _spriteBala = Content.Load<Texture2D>("bala");
+            _spriteAsteroide = Content.Load<Texture2D>("asteroide");
+
+            // MODIFICA ESTE NÚMERO: Pon la cantidad exacta de fotogramas que tiene tu tira de imágenes de la nave
+            _totalFotogramas = 4;
+
+            _anchoFotograma = _spriteNave.Width / _totalFotogramas;
+            _altoFotograma = _spriteNave.Height;
+        }
+
+
+
+        protected override void Update(GameTime gameTime)
+        {
+            KeyboardState estadoTecladoActual = Keyboard.GetState();
+
+            if (estadoTecladoActual.IsKeyDown(Keys.Escape)) Exit();
+
+            // 1. ROTACIÓN EXCLUSIVA CON LAS FLECHAS
+            if (estadoTecladoActual.IsKeyDown(Keys.Left)) _jugador.Angulo -= _velocidadRotacion;
+            if (estadoTecladoActual.IsKeyDown(Keys.Right)) _jugador.Angulo += _velocidadRotacion;
+
+            // 2. CÁLCULO DE VECTORES DE DIRECCIÓN
+            float direccionX = (float)Math.Cos(_jugador.Angulo - MathHelper.PiOver2);
+            float direccionY = (float)Math.Sin(_jugador.Angulo - MathHelper.PiOver2);
+
+            float lateralX = (float)Math.Cos(_jugador.Angulo);
+            float lateralY = (float)Math.Sin(_jugador.Angulo);
+
+            // Por defecto, asumimos que está quieta (Fotograma 0 = Sin fuego)
+            bool estaMoviendose = false;
+
+            // 3. MOVIMIENTO TRASLACIONAL CON WASD
+            if (estadoTecladoActual.IsKeyDown(Keys.W))
+            {
+                _jugador.Posicion.X += direccionX * _velocidadNave;
+                _jugador.Posicion.Y += direccionY * _velocidadNave;
+                estaMoviendose = true;
+            }
+            if (estadoTecladoActual.IsKeyDown(Keys.S))
+            {
+                _jugador.Posicion.X -= direccionX * _velocidadNave;
+                _jugador.Posicion.Y -= direccionY * _velocidadNave;
+            }
+            if (estadoTecladoActual.IsKeyDown(Keys.A))
+            {
+                _jugador.Posicion.X -= lateralX * _velocidadNave;
+                _jugador.Posicion.Y -= lateralY * _velocidadNave;
+            }
+            if (estadoTecladoActual.IsKeyDown(Keys.D))
+            {
+                _jugador.Posicion.X += lateralX * _velocidadNave;
+                _jugador.Posicion.Y += lateralY * _velocidadNave;
+            }
+
+            // Restricción del universo virtual
+            if (_jugador.Posicion.X < 0) _jugador.Posicion.X = 0;
+            if (_jugador.Posicion.X > ANCHO_VIRTUAL) _jugador.Posicion.X = ANCHO_VIRTUAL;
+            if (_jugador.Posicion.Y < 0) _jugador.Posicion.Y = 0;
+            if (_jugador.Posicion.Y > ALTO_VIRTUAL) _jugador.Posicion.Y = ALTO_VIRTUAL;
+
+            // DISPARAR CON F
+            if (estadoTecladoActual.IsKeyDown(Keys.F) && _estadoTecladoAnterior.IsKeyUp(Keys.F))
+            {
+                _proyectil.Activa = true;
+                _proyectil.Posicion = new Vector2Virtual(_jugador.Posicion.X, _jugador.Posicion.Y);
+                _proyectil.Dirección = new Vector2(direccionX, direccionY);
+            }
+
+            // ACTUALIZAR PROYECTIL
+            if (_proyectil.Activa)
+            {
+                _proyectil.Posicion.X += _proyectil.Dirección.X * 3.0f;
+                _proyectil.Posicion.Y += _proyectil.Dirección.Y * 3.0f;
+
+                if (_proyectil.Posicion.Y < 0 || _proyectil.Posicion.Y > ALTO_VIRTUAL ||
+                    _proyectil.Posicion.X < 0 || _proyectil.Posicion.X > ANCHO_VIRTUAL)
+                {
+                    _proyectil.Activa = false;
+                }
+            }
+
+            // --- NUEVO SISTEMA DE ASTEROIDES ---
+            _cronometroSpawn += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (_cronometroSpawn >= _tiempoEntreAsteroides)
+            {
+                _cronometroSpawn = 0f;
+                Asteroide nuevoAsteroide;
+                nuevoAsteroide.Posicion = new Vector2Virtual(_random.Next(0, ANCHO_VIRTUAL), -5);
+                nuevoAsteroide.Dirección = new Vector2((float)(_random.NextDouble() * 2 - 1), 1f);
+                nuevoAsteroide.Dirección.Normalize();
+                nuevoAsteroide.Velocidad = (float)(_random.NextDouble() * 0.5f + 0.3f);
+                nuevoAsteroide.Vida = 3;
+                nuevoAsteroide.Activo = true;
+                nuevoAsteroide.RadioColision = 4f;
+                _listaAsteroides.Add(nuevoAsteroide);
+            }
+
+            for (int i = 0; i < _listaAsteroides.Count; i++)
+            {
+                Asteroide ast = _listaAsteroides[i];
+                if (ast.Activo)
+                {
+                    ast.Posicion.X += ast.Dirección.X * ast.Velocidad;
+                    ast.Posicion.Y += ast.Dirección.Y * ast.Velocidad;
+
+                    if (ast.Posicion.Y > ALTO_VIRTUAL + 10) ast.Activo = false;
+
+                    if (_proyectil.Activa)
+                    {
+                        float distX = _proyectil.Posicion.X - ast.Posicion.X;
+                        float distY = _proyectil.Posicion.Y - ast.Posicion.Y;
+                        float distancia = (float)Math.Sqrt(distX * distX + distY * distY);
+
+                        if (distancia < ast.RadioColision)
+                        {
+                            ast.Vida--;
+                            _proyectil.Activa = false;
+                            if (ast.Vida <= 0) ast.Activo = false;
+                        }
+                    }
+                }
+                _listaAsteroides[i] = ast;
+            }
+            _listaAsteroides.RemoveAll(a => !a.Activo);
+
+            // --- LÓGICA DE ANIMACIÓN SINCRO (CORREGIDA) ---
+            if (estaMoviendose)
+            {
+                _cronometroTiempo += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (_cronometroTiempo >= _tiempoPorFotograma)
+                {
+                    _fotogramaActual++;
+                    // Si llega al final de los fotogramas, vuelve al frame 1 (animación de fuego)
+                    if (_fotogramaActual >= _totalFotogramas) _fotogramaActual = 1;
+                    _cronometroTiempo = 0f;
+                }
+            }
+            else
+            {
+                _fotogramaActual = 0; // Si no se mueve, se queda en el fotograma 0 fijo (sin fuego)
+            }
+
+            _estadoTecladoAnterior = estadoTecladoActual;
+            base.Update(gameTime);
+        }
+
+
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            float factorX = _graphics.PreferredBackBufferWidth / (float)ANCHO_VIRTUAL;
+            float factorY = _graphics.PreferredBackBufferHeight / (float)ALTO_VIRTUAL;
+
+            // 1. Calculamos la posición en pantalla
+            Vector2 posicionNavePixeles = new Vector2(_jugador.Posicion.X * factorX, _jugador.Posicion.Y * factorY);
+
+            // 2. Definimos el cuadro de recorte exacto para el frame actual
+            Rectangle cuadroRecorte = new Rectangle(_fotogramaActual * _anchoFotograma, 0, _anchoFotograma, _altoFotograma);
+
+            // 3. ¡SOLUCIÓN CRÍTICA!: El centro debe calcularse usando el tamaño del recorte actual
+            Vector2 centroNave = new Vector2(_anchoFotograma / 2f, _altoFotograma / 2f);
+
+            _spriteBatch.Begin();
+
+            // Dibujar Asteroides
+            foreach (var ast in _listaAsteroides)
+            {
+                if (ast.Activo)
+                {
+                    Vector2 posAstPixeles = new Vector2(ast.Posicion.X * factorX, ast.Posicion.Y * factorY);
+                    Vector2 centroAsteroide = new Vector2(_spriteAsteroide.Width / 2f, _spriteAsteroide.Height / 2f);
+
+                    Color colorDaño = Color.White;
+                    if (ast.Vida == 2) colorDaño = Color.LightCoral;
+                    if (ast.Vida == 1) colorDaño = Color.Red;
+
+                    _spriteBatch.Draw(_spriteAsteroide, posAstPixeles, null, colorDaño, 0f, centroAsteroide, 1f, SpriteEffects.None, 0f);
+                }
+            }
+
+            // Dibujar Bala
+            if (_proyectil.Activa)
+            {
+                Vector2 posicionBalaPixeles = new Vector2(_proyectil.Posicion.X * factorX, _proyectil.Posicion.Y * factorY);
+                Vector2 centroBala = new Vector2(_spriteBala.Width / 2f, _spriteBala.Height / 2f);
+                _spriteBatch.Draw(_spriteBala, posicionBalaPixeles, null, Color.White, 0f, centroBala, 1f, SpriteEffects.None, 0f);
+            }
+
+            // Dibujar Nave armada correctamente
+            _spriteBatch.Draw(_spriteNave, posicionNavePixeles, cuadroRecorte, Color.White, _jugador.Angulo, centroNave, 1f, SpriteEffects.None, 0f);
+
+            _spriteBatch.End();
+
+            base.Draw(gameTime);
+        }
+    }
+}
