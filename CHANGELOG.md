@@ -6,7 +6,7 @@ Todos los cambios notables en el proyecto **Asteroid Destroy** se documentan en 
 
 ## [0.5.0] - 2026-11-23
 ### Agregado
-* **Base de Datos Ampliada (`db/asteroid_destroy_ampliado.sql`):** Esquema relacional de 13 tablas normalizadas en 3FN integrando telemetría de combate (`sessions`, `collisionlogs`, `dodgerecords`, `poweruplogs`) y economía de tienda (`ships`, `allies`, `player_ships`, `player_allies`, `gachalogs`).
+* **Base de Datos Ampliada (`db/asteroid_destroy.sql`):** Esquema relacional de 13 tablas normalizadas en 3FN integrando telemetría de combate (`sessions`, `collisionlogs`, `dodgerecords`, `poweruplogs`) y economía de tienda (`ships`, `allies`, `player_ships`, `player_allies`, `gachalogs`).
 * **Consultas Analíticas (`db/consultas_analiticas.sql`):** 7 consultas SQL avanzadas con `INNER JOIN`, `LEFT JOIN`, `GROUP BY`, `HAVING`, subconsultas y funciones agregadas.
 * **Diagrama Entidad-Relación (`docs/DER_Asteroid_Destroy.drawio`):** Modelo actualizado sincronizado con las restricciones de integridad referencial.
 * **Documentación Técnica (`docs/documentacion_tecnica_db_algoritmos.md`):** Justificación formal de normalización (1FN → 3FN), justificación de estructuras de datos en C# y trazas algorítmicas con análisis de complejidad asintótica $O$.
