@@ -52,12 +52,12 @@ Asteroid-Destroy/
 ## Instrucciones de Instalación y Ejecución
 
 ### 1. Configurar la Base de Datos (MySQL)
-1. Asegúrate de tener activo un servidor **MySQL 8.0** (vía XAMPP, Laragon, Docker o MySQL Workbench).
-2. Importa y ejecuta el archivo `db/asteroid_destroy.sql` para crear la base de datos `asteroid_destroy`, sus 13 tablas y los registros iniciales de prueba.
+1. Activar el srvidor MySql via XAMPP.
+2. Importa y ejecuta el archivo `db/asteroid_destroy.sql`.
 3. *(Opcional)* Ejecuta `db/consultas_analiticas.sql` para verificar las métricas y reportes analíticos.
 
 ### 2. Compilar y Ejecutar el Videojuego (MonoGame)
-1. Clona este repositorio en tu equipo:
+1. Clona el repositorio que contiene el juego en el equipo:
    ```bash
    git clone <URL_DEL_REPOSITORIO>
    cd Asteroid-Destroy/src
