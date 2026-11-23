@@ -37,7 +37,7 @@ Asteroid-Destroy/
 │   ├── Program.cs              # Punto de entrada de la aplicación
 │   └── Asteroid Destroy.csproj # Configuración y dependencias del proyecto .NET
 ├── db/                         # Scripts de Base de Datos MySQL
-│   ├── asteroid_destroy_ampliado.sql  # Creación de esquema (13 tablas) y datos de prueba
+│   ├── asteroid_destroy.sql  # Creación de esquema (13 tablas) y datos de prueba
 │   └── consultas_analiticas.sql       # Consultas con JOIN, GROUP BY, HAVING y SUBQUERIES
 ├── docs/                       # Documentación técnica y académica
 │   ├── DER_Asteroid_Destroy.drawio            # Diagrama Entidad-Relación editable
@@ -53,7 +53,7 @@ Asteroid-Destroy/
 
 ### 1. Configurar la Base de Datos (MySQL)
 1. Asegúrate de tener activo un servidor **MySQL 8.0** (vía XAMPP, Laragon, Docker o MySQL Workbench).
-2. Importa y ejecuta el archivo `db/asteroid_destroy_ampliado.sql` para crear la base de datos `asteroid_destroy`, sus 13 tablas y los registros iniciales de prueba.
+2. Importa y ejecuta el archivo `db/asteroid_destroy.sql` para crear la base de datos `asteroid_destroy`, sus 13 tablas y los registros iniciales de prueba.
 3. *(Opcional)* Ejecuta `db/consultas_analiticas.sql` para verificar las métricas y reportes analíticos.
 
 ### 2. Compilar y Ejecutar el Videojuego (MonoGame)
