@@ -31,10 +31,10 @@ Videojuego arcade espacial 2D desarrollado en **C#** utilizando el framework **M
 
 ```text
 Asteroid-Destroy/
-├── src/                        # Código fuente del videojuego en C# (MonoGame)
-│   ├── Content/                # Pipeline de contenido (.mgcb) y recursos compilados
-│   ├── Game1.cs                # Bucle principal, estados de pantalla, físicas y renderizado
-│   ├── Program.cs              # Punto de entrada de la aplicación
+├── src/                                       # Código fuente del videojuego en C# (MonoGame)
+│   ├── Content/                               # Pipeline de contenido (.mgcb) y recursos compilados
+│   ├── Game1.cs                               # Bucle principal, estados de pantalla, físicas y renderizado
+│   ├── Program.cs                             # Punto de entrada de la aplicación
 │   └── Asteroid Destroy.csproj                # Configuración y dependencias del proyecto .NET
 ├── db/                                        # Scripts de Base de Datos MySQL
 │   ├── asteroid_destroy.sql                   # Creación de esquema (13 tablas) y datos de prueba
