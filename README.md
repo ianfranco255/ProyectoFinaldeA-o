@@ -35,16 +35,16 @@ Asteroid-Destroy/
 │   ├── Content/                # Pipeline de contenido (.mgcb) y recursos compilados
 │   ├── Game1.cs                # Bucle principal, estados de pantalla, físicas y renderizado
 │   ├── Program.cs              # Punto de entrada de la aplicación
-│   └── Asteroid Destroy.csproj # Configuración y dependencias del proyecto .NET
-├── db/                         # Scripts de Base de Datos MySQL
-│   ├── asteroid_destroy.sql  # Creación de esquema (13 tablas) y datos de prueba
-│   └── consultas_analiticas.sql       # Consultas con JOIN, GROUP BY, HAVING y SUBQUERIES
-├── docs/                       # Documentación técnica y académica
+│   └── Asteroid Destroy.csproj                # Configuración y dependencias del proyecto .NET
+├── db/                                        # Scripts de Base de Datos MySQL
+│   ├── asteroid_destroy.sql                   # Creación de esquema (13 tablas) y datos de prueba
+│   └── consultas_analiticas.sql               # Consultas con JOIN, GROUP BY, HAVING y SUBQUERIES
+├── docs/                                      # Documentación técnica y académica
 │   ├── DER_Asteroid_Destroy.drawio            # Diagrama Entidad-Relación editable
 │   └── documentacion_tecnica_db_algoritmos.md # Justificación 1FN-3FN y trazas algorítmicas
-├── assets/                     # Recursos gráficos originales (SpriteSheets PNG de Pixilart)
-├── README.md                   # Documentación general del proyecto
-└── CHANGELOG.md                # Historial cronológico de versiones y cambios
+|   └── ideas                                  # Ideas iniciales del diseño del juego
+├── README.md                                  # Documentación general del proyecto
+└── CHANGELOG.md                               # Historial cronológico de versiones y cambios
 ```
 
 ---
