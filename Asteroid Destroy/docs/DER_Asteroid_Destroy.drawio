@@ -1,0 +1,121 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0" version="24.0.0">
+  <diagram name="DER_Ampliado" id="der-asteroid-destroy-v2">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ENTIDADES -->
+        <mxCell id="ent_abilities" value="ABILITIES&#xa;----------------&#xa;PK id&#xa;name&#xa;cooldown&#xa;damage&#xa;consume" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="160" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_players" value="PLAYERS&#xa;----------------&#xa;PK id&#xa;user_name&#xa;hp, xp, level&#xa;monedas, llaves_gacha&#xa;FK id_ability" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="370" width="180" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_gachalogs" value="GACHALOGS&#xa;----------------&#xa;PK id&#xa;FK player_id&#xa;rareza&#xa;recompensa_obtenida&#xa;fecha_tirada" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_player_allies" value="PLAYER_ALLIES&#xa;----------------&#xa;PK id&#xa;FK player_id&#xa;FK ally_id&#xa;activo&#xa;fecha_adquisicion" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="120" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_allies" value="ALLIES&#xa;----------------&#xa;PK id&#xa;nombre&#xa;tipo_bonificacion&#xa;valor_bonificacion&#xa;precio_monedas, sprite" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="120" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_player_ships" value="PLAYER_SHIPS&#xa;----------------&#xa;PK id&#xa;FK player_id&#xa;FK ship_id&#xa;equipada&#xa;fecha_adquisicion" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="640" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_ships" value="SHIPS&#xa;----------------&#xa;PK id&#xa;nombre&#xa;velocidad_base&#xa;vidas_maximas&#xa;cadencia_disparo&#xa;precio_monedas, sprite" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="640" width="180" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_sessions" value="SESSIONS&#xa;----------------&#xa;PK id&#xa;FK player_id&#xa;FK ship_id&#xa;inicio, fin&#xa;tiempo_supervivencia&#xa;dificultad_inicial&#xa;puntaje_total" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="365" width="180" height="150" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_poweruplogs" value="POWERUPLOGS&#xa;----------------&#xa;PK id&#xa;FK session_id&#xa;FK powerup_id&#xa;timestamp_aplicacion&#xa;timestamp_fin" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="120" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_powerups" value="POWERUPS&#xa;----------------&#xa;PK id&#xa;nombre&#xa;efecto&#xa;duracion_base&#xa;probabilidad_spawn" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="120" width="170" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_dodgerecords" value="DODGERECORDS&#xa;----------------&#xa;PK id&#xa;FK session_id&#xa;FK asteroid_id&#xa;timestamp&#xa;distancia_minima" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="380" width="180" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_collisionlogs" value="COLLISIONLOGS&#xa;----------------&#xa;PK id&#xa;FK session_id&#xa;FK asteroid_id&#xa;timestamp&#xa;coordenada_impacto&#xa;dano_recibido" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="640" width="180" height="130" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ent_asteroidtypes" value="ASTEROIDTYPES&#xa;----------------&#xa;PK id&#xa;tamano&#xa;velocidad_base&#xa;sprite&#xa;puntos_evasion&#xa;vida_base" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="510" width="170" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- RELACIONES -->
+        <mxCell id="rel_ab_pl" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_abilities" target="ent_players">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_pl_ga" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_players" target="ent_gachalogs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_pl_pa" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_players" target="ent_player_allies">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_al_pa" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_allies" target="ent_player_allies">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_pl_ps" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_players" target="ent_player_ships">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_sh_ps" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_ships" target="ent_player_ships">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_sh_se" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_ships" target="ent_sessions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_pl_se" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_players" target="ent_sessions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_se_pu" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_sessions" target="ent_poweruplogs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_pu_pl" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_powerups" target="ent_poweruplogs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_se_do" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_sessions" target="ent_dodgerecords">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_as_do" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_asteroidtypes" target="ent_dodgerecords">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_se_co" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_sessions" target="ent_collisionlogs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rel_as_co" value="1:M" style="endArrow=classic;startArrow=none;html=1;rounded=0;" edge="1" parent="1" source="ent_asteroidtypes" target="ent_collisionlogs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
